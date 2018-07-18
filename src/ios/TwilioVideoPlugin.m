@@ -5,11 +5,11 @@
 
 @interface TwilioVideoPlugin : CDVPlugin
 
+@property (nonatomic, copy) NSString* callbackId;
+
 @end
 
 @implementation TwilioVideoPlugin
-
-@property (CDVInvokedUrlCommand*) pluginCommand;
 
 - (void)openRoom:(CDVInvokedUrlCommand*)command {
     NSString* token = command.arguments[0];
@@ -30,8 +30,8 @@
 
             [vc connectToRoom:room token:token];
 
-            pluginCommand = command;
-            [self.commandDelegate sendPluginResult:pluginResult callbackId:pluginCommand.callbackId];
+            self.callbackId = command.callbackId;
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
         }];
     });
 
@@ -41,7 +41,7 @@
     [self.viewController dismissViewControllerAnimated:YES completion:nil];
 
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"DONE"];
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:pluginCommand.callbackId];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
 }
 
 @end
