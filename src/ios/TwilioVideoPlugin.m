@@ -9,6 +9,8 @@
 
 @implementation TwilioVideoPlugin
 
+@property (CDVInvokedUrlCommand*) pluginCommand;
+
 - (void)openRoom:(CDVInvokedUrlCommand*)command {
     NSString* token = command.arguments[0];
     NSString* room = command.arguments[1];
@@ -27,7 +29,9 @@
             [pluginResult setKeepCallbackAsBool:YES];
 
             [vc connectToRoom:room token:token];
-            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+
+            pluginCommand = command;
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:pluginCommand.callbackId];
         }];
     });
 
@@ -37,7 +41,7 @@
     [self.viewController dismissViewControllerAnimated:YES completion:nil];
 
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"DONE"];
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:pluginCommand.callbackId];
 }
 
 @end
