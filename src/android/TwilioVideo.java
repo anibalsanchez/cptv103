@@ -68,7 +68,7 @@ public class TwilioVideo extends CordovaPlugin {
 
             });
 
-            that.callbackContext.success("OK");
+            this.callbackContext.success("OK");
         } catch (JSONException e) {
             //Log.e(TAG, "Invalid JSON string: " + json, e);
             //return null;
