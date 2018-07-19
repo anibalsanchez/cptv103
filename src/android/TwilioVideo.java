@@ -55,12 +55,13 @@ public class TwilioVideo extends CordovaPlugin {
             LOG.d("ROOMID", roomId);
      		cordova.getThreadPool().execute(new Runnable() {
                 public void run() {
-
                     Intent intentTwilioVideo = new Intent(that.cordova.getActivity().getBaseContext(), TwilioVideoActivity.class);
         			intentTwilioVideo.putExtra("token", token);
                     intentTwilioVideo.putExtra("roomId", roomId);
+
                     // avoid calling other phonegap apps
                     intentTwilioVideo.setPackage(that.cordova.getActivity().getApplicationContext().getPackageName());
+
                     //that.cordova.startActivityForResult(that, intentTwilioVideo);
                     //that.cordova.getActivity().startActivity(intentTwilioVideo);
                     that.cordova.startActivityForResult(that, intentTwilioVideo, 0);
@@ -68,7 +69,11 @@ public class TwilioVideo extends CordovaPlugin {
 
             });
 
-            this.callbackContext.success("OK");
+            // this.callbackContext.success("OK");
+
+            PluginResult resultOK = new PluginResult(PluginResult.Status.OK, "OK");
+            resultOK.setKeepCallback(true);
+            this.callbackContext.sendPluginResult(resultOK);
         } catch (JSONException e) {
             //Log.e(TAG, "Invalid JSON string: " + json, e);
             //return null;
@@ -87,6 +92,8 @@ public class TwilioVideo extends CordovaPlugin {
         this.roomId = state.getString("roomId");
         this.callbackContext = callbackContext;
 
-        this.callbackContext.success("DONE");
+        // this.callbackContext.success("DONE");
+        PluginResult resultDONE = new PluginResult(PluginResult.Status.OK, "DONE");
+        this.callbackContext.sendPluginResult(DONE);
     }
 }
