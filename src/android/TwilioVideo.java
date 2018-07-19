@@ -34,7 +34,7 @@ public class TwilioVideo extends CordovaPlugin {
         // your init code here
     }
 
-    
+
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 		this.callbackContext = callbackContext;
 		if (action.equals("openRoom")) {
@@ -64,8 +64,9 @@ public class TwilioVideo extends CordovaPlugin {
                     //that.cordova.startActivityForResult(that, intentTwilioVideo);
                     //that.cordova.getActivity().startActivity(intentTwilioVideo);
                     that.cordova.startActivityForResult(that, intentTwilioVideo, 0);
+                    this.callbackContext.success("OK");
                 }
-                    
+
             });
         } catch (JSONException e) {
             //Log.e(TAG, "Invalid JSON string: " + json, e);
@@ -84,8 +85,7 @@ public class TwilioVideo extends CordovaPlugin {
         this.token = state.getString("token");
         this.roomId = state.getString("roomId");
         this.callbackContext = callbackContext;
+
+        this.callbackContext.success("DONE");
     }
-
-
-
 }
