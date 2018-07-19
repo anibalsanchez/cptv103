@@ -91,7 +91,9 @@ public class TwilioVideo extends CordovaPlugin {
         this.token = state.getString("token");
         this.roomId = state.getString("roomId");
         this.callbackContext = callbackContext;
+    }
 
+    public void onDestroy() {
         // this.callbackContext.success("DONE");
         PluginResult resultDONE = new PluginResult(PluginResult.Status.OK, "DONE");
         this.callbackContext.sendPluginResult(resultDONE);
