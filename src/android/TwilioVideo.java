@@ -94,6 +94,6 @@ public class TwilioVideo extends CordovaPlugin {
 
         // this.callbackContext.success("DONE");
         PluginResult resultDONE = new PluginResult(PluginResult.Status.OK, "DONE");
-        this.callbackContext.sendPluginResult(DONE);
+        this.callbackContext.sendPluginResult(resultDONE);
     }
 }
