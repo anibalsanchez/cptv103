@@ -64,7 +64,7 @@ public class TwilioVideo extends CordovaPlugin {
                     //that.cordova.startActivityForResult(that, intentTwilioVideo);
                     //that.cordova.getActivity().startActivity(intentTwilioVideo);
                     that.cordova.startActivityForResult(that, intentTwilioVideo, 0);
-                    this.callbackContext.success("OK");
+                    that.callbackContext.success("OK");
                 }
 
             });
