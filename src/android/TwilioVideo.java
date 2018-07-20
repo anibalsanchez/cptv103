@@ -95,9 +95,9 @@ public class TwilioVideo extends CordovaPlugin {
         this.callbackContext.success("OK C");
     }
 
-    public void onStop() {
-        this.callbackContext.success("OK A");
-    }
+    // public void onStop() {
+    //     this.callbackContext.success("OK A");
+    // }
 
     public void onDestroy() {
         // this.callbackContext.success("DONE");
