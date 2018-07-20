@@ -71,9 +71,9 @@ public class TwilioVideo extends CordovaPlugin {
 
             // this.callbackContext.success("OK");
 
-            PluginResult resultOK = new PluginResult(PluginResult.Status.OK, "OK");
-            resultOK.setKeepCallback(true);
-            this.callbackContext.sendPluginResult(resultOK);
+            // PluginResult resultOK = new PluginResult(PluginResult.Status.OK, "OK");
+            // resultOK.setKeepCallback(true);
+            // this.callbackContext.sendPluginResult(resultOK);
         } catch (JSONException e) {
             //Log.e(TAG, "Invalid JSON string: " + json, e);
             //return null;
@@ -91,11 +91,23 @@ public class TwilioVideo extends CordovaPlugin {
         this.token = state.getString("token");
         this.roomId = state.getString("roomId");
         this.callbackContext = callbackContext;
+
+        this.callbackContext.success("OK C");
+    }
+
+    public void onStop() {
+        this.callbackContext.success("OK A");
     }
 
     public void onDestroy() {
         // this.callbackContext.success("DONE");
-        PluginResult resultDONE = new PluginResult(PluginResult.Status.OK, "DONE");
-        this.callbackContext.sendPluginResult(resultDONE);
+        // PluginResult resultDONE = new PluginResult(PluginResult.Status.OK, "DONE");
+        // this.callbackContext.sendPluginResult(resultDONE);
+
+        this.callbackContext.success("OK B");
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        this.callbackContext.success("OK D");
     }
 }
