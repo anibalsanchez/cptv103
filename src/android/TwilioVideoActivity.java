@@ -1,5 +1,8 @@
 package org.apache.cordova.plugin;
-import com.extly.asybapppre.R;
+
+// import com.extly.asybapppre.R;
+import com.qaracter.asybapppre.R;
+// import com.extly.asybapppre.R;
 
 
 import android.Manifest;
