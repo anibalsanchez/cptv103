@@ -112,10 +112,12 @@
         // Toggle the button title
         if (self.localAudioTrack.isEnabled) {
             // [self.micButton setTitle:@"Mute" forState:UIControlStateNormal];
-            [self.micButton setImage:@"ios-mic.png" forState:UIControlStateNormal];
+            UIImage *btnImage = [UIImage imageNamed:@"ios-mic.png"];
+            [self.micButton setImage:btnImage forState:UIControlStateNormal];
         } else {
             // [self.micButton setTitle:@"Unmute" forState:UIControlStateNormal];
-            [self.micButton setImage:@"ios-mic-off.png" forState:UIControlStateNormal];
+            UIImage *btnImage = [UIImage imageNamed:@"ios-mic-off.png"];
+            [self.micButton setImage:btnImage forState:UIControlStateNormal];
         }
     }
 }
