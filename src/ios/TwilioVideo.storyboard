@@ -151,7 +151,7 @@
                                     <constraint firstAttribute="height" constant="40" id="Zj7-mh-UC6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" image="ios-eye.png">
+                                <state key="normal" image="ios-reverse-camera.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -218,5 +218,6 @@
         <image name="ios-call.png" width="512" height="512"/>
         <image name="ios-eye.png" width="512" height="512"/>
         <image name="ios-mic.png" width="512" height="512"/>
+        <image name="ios-reverse-camera.png" width="512" height="512"/>
     </resources>
 </document>
