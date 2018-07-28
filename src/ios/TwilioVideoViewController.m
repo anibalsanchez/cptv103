@@ -33,6 +33,8 @@
 @property (nonatomic, weak) IBOutlet UILabel *messageLabel;
 @property (nonatomic, weak) IBOutlet UITextField *roomTextField;
 @property (nonatomic, weak) IBOutlet UIButton *micButton;
+@property (nonatomic, weak) IBOutlet UIButton *cameraOffButton;
+@property (nonatomic, weak) IBOutlet UIButton *flipCameraButtonPressed;
 @property (nonatomic, weak) IBOutlet UILabel *roomLabel;
 @property (nonatomic, weak) IBOutlet UILabel *roomLine;
 
@@ -60,6 +62,8 @@
     // Disconnect and mic button will be displayed when client is connected to a room.
     self.disconnectButton.hidden = YES;
     self.micButton.hidden = YES;
+    self.cameraOffButton.hidden = YES;
+    self.flipCameraButton.hidden = YES;
 
     self.roomTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     self.roomTextField.delegate = self;
@@ -130,13 +134,11 @@
 
         // Toggle the button title
         if (self.localVideoTrack.isEnabled) {
-            // [self.micButton setTitle:@"Mute" forState:UIControlStateNormal];
-            UIImage *btnImage = [UIImage imageNamed:@"ios-mic.png"];
-            [self.micButton setImage:btnImage forState:UIControlStateNormal];
+            UIImage *btnImage = [UIImage imageNamed:@"ios-eye.png"];
+            [self.cameraOffButton setImage:btnImage forState:UIControlStateNormal];
         } else {
-            // [self.micButton setTitle:@"Unmute" forState:UIControlStateNormal];
-            UIImage *btnImage = [UIImage imageNamed:@"ios-mic-off.png"];
-            [self.micButton setImage:btnImage forState:UIControlStateNormal];
+            UIImage *btnImage = [UIImage imageNamed:@"ios-eye-off.png"];
+            [self.cameraOffButton setImage:btnImage forState:UIControlStateNormal];
         }
     }
 }
@@ -183,16 +185,8 @@
 - (void)flipCamera {
     if (self.camera.source == TVICameraCaptureSourceFrontCamera) {
         [self.camera selectSource:TVICameraCaptureSourceBackCameraWide];
-
-        // Back Camera Icon
-        UIImage *btnImage = [UIImage imageNamed:@"ios-mic-off.png"];
-        [self.micButton setImage:btnImage forState:UIControlStateNormal];
     } else {
         [self.camera selectSource:TVICameraCaptureSourceFrontCamera];
-
-        // FrontCamera
-        UIImage *btnImage = [UIImage imageNamed:@"ios-mic.png"];
-        [self.micButton setImage:btnImage forState:UIControlStateNormal];
     }
 }
 
@@ -297,8 +291,13 @@
     self.connectButton.hidden = inRoom;
     self.roomLine.hidden = inRoom;
     self.roomLabel.hidden = inRoom;*/
+
     self.micButton.hidden = !inRoom;
-    self.disconnectButton.hidden = !inRoom;
+    self.cameraOffButton.hidden = !inRoom;
+    self.flipCameraButton.hidden = !inRoom;
+
+    // Boton desconectar oculto para que el usuario cierre haciendo Done
+    // self.disconnectButton.hidden = !inRoom;
     [UIApplication sharedApplication].idleTimerDisabled = inRoom;
 }
 
