@@ -166,7 +166,7 @@
     AVAudioSession *session = [AVAudioSession sharedInstance];
 
     // Toggle
-    if (self.audioMode isEqualToString:@"speaker") {
+    if ([self.audioMode isEqualToString:@"speaker"]) {
         self.audioMode = @"earpiece";
 
         UIImage *btnImage = [UIImage imageNamed:@"ios-phone-volume.png"];
