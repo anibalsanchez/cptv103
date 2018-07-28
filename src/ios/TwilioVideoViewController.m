@@ -35,6 +35,7 @@
 @property (nonatomic, weak) IBOutlet UIButton *micButton;
 @property (nonatomic, weak) IBOutlet UIButton *cameraOffButton;
 @property (nonatomic, weak) IBOutlet UIButton *flipCameraButton;
+@property (nonatomic, weak) IBOutlet UIButton *flipAudioButton;
 @property (nonatomic, weak) IBOutlet UILabel *roomLabel;
 @property (nonatomic, weak) IBOutlet UILabel *roomLine;
 
@@ -59,11 +60,12 @@
     // Preview our local camera track in the local video preview view.
     [self startPreview];
 
-    // Disconnect and mic button will be displayed when client is connected to a room.
-    self.disconnectButton.hidden = YES;
-    self.micButton.hidden = YES;
+    // Disconnect buttons will be displayed when client is connected to a room.
     self.cameraOffButton.hidden = YES;
+    self.disconnectButton.hidden = YES;
+    self.flipAudioButton.hidden = YES;
     self.flipCameraButton.hidden = YES;
+    self.micButton.hidden = YES;
 
     self.roomTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     self.roomTextField.delegate = self;
@@ -295,12 +297,12 @@
     self.roomLine.hidden = inRoom;
     self.roomLabel.hidden = inRoom;*/
 
-    self.micButton.hidden = !inRoom;
     self.cameraOffButton.hidden = !inRoom;
+    self.disconnectButton.hidden = !inRoom;
+    self.flipAudioButton.hidden = !inRoom;
     self.flipCameraButton.hidden = !inRoom;
+    self.micButton.hidden = !inRoom;
 
-    // Boton desconectar oculto para que el usuario cierre haciendo Done
-    // self.disconnectButton.hidden = !inRoom;
     [UIApplication sharedApplication].idleTimerDisabled = inRoom;
 }
 
