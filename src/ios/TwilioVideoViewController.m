@@ -34,7 +34,7 @@
 @property (nonatomic, weak) IBOutlet UITextField *roomTextField;
 @property (nonatomic, weak) IBOutlet UIButton *micButton;
 @property (nonatomic, weak) IBOutlet UIButton *cameraOffButton;
-@property (nonatomic, weak) IBOutlet UIButton *flipCameraButtonPressed;
+@property (nonatomic, weak) IBOutlet UIButton *flipCameraButton;
 @property (nonatomic, weak) IBOutlet UILabel *roomLabel;
 @property (nonatomic, weak) IBOutlet UILabel *roomLine;
 
