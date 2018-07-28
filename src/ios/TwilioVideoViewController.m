@@ -298,10 +298,12 @@
     self.roomLabel.hidden = inRoom;*/
 
     self.cameraOffButton.hidden = !inRoom;
-    self.disconnectButton.hidden = !inRoom;
     self.flipAudioButton.hidden = !inRoom;
     self.flipCameraButton.hidden = !inRoom;
     self.micButton.hidden = !inRoom;
+
+    // We have a DONE button, so no disconnectButton
+    // self.disconnectButton.hidden = !inRoom;
 
     [UIApplication sharedApplication].idleTimerDisabled = inRoom;
 }
