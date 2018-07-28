@@ -90,29 +90,6 @@
                                     <action selector="micButtonPressed:" destination="jSN-F6-Q4K" eventType="touchUpInside" id="6Tr-Cb-Rmf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwp-9E-VzT" userLabel="CameraOffButton Button">
-                                <rect key="frame" x="116" y="611" width="40" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.82999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="QMt-3K-tlF"/>
-                                    <constraint firstAttribute="height" constant="40" id="Zj7-mh-UC5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" image="ios-eye.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="imageView.contentMode">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="cameraOffButtonPressed:" destination="jSN-F6-Q4K" eventType="touchUpInside" id="6Tr-Cb-Rmg"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" enabled="NO" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krA-sT-Z3g">
                                 <rect key="frame" x="16" y="377" width="40" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.82999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -143,7 +120,7 @@
                                     <constraint firstAttribute="height" constant="160" id="s89-nA-17F"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwp-9E-VzU" userLabel="FlipCameraButton Button">
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwp-9E-VzU" userLabel="FlipCameraButton Button">
                                 <rect key="frame" x="16" y="611" width="40" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.82999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -166,13 +143,40 @@
                                     <action selector="flipCameraButtonPressed:" destination="jSN-F6-Q4K" eventType="touchUpInside" id="6Tr-Cb-Rmh"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwp-9E-VzT" userLabel="CameraOffButton Button">
+                                <rect key="frame" x="116" y="611" width="40" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.82999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="QMt-3K-tlF"/>
+                                    <constraint firstAttribute="height" constant="40" id="Zj7-mh-UC5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" image="ios-eye.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="imageView.contentMode">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="cameraOffButtonPressed:" destination="jSN-F6-Q4K" eventType="touchUpInside" id="6Tr-Cb-Rmg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="jgR-Qy-dC6" firstAttribute="top" secondItem="Zud-AS-DEE" secondAttribute="bottom" id="0Am-2H-kE1"/>
+                            <constraint firstItem="tZu-uw-hgi" firstAttribute="top" secondItem="rwp-9E-VzU" secondAttribute="bottom" constant="16" id="1HL-Ms-yau"/>
                             <constraint firstItem="krA-sT-Z3g" firstAttribute="leading" secondItem="3Bh-pO-6uY" secondAttribute="leadingMargin" id="4jO-qh-yH2"/>
+                            <constraint firstItem="rwp-9E-VzT" firstAttribute="bottom" secondItem="rwp-9E-VzU" secondAttribute="bottom" id="6kK-L1-ymW"/>
+                            <constraint firstItem="rwp-9E-VzU" firstAttribute="leading" secondItem="3Bh-pO-6uY" secondAttribute="leadingMargin" id="9vU-4L-An1"/>
                             <constraint firstItem="7dZ-Ur-uSj" firstAttribute="top" secondItem="Zud-AS-DEE" secondAttribute="bottom" id="AaN-mH-AYD"/>
                             <constraint firstItem="jgR-Qy-dC6" firstAttribute="top" secondItem="EkL-i8-cDP" secondAttribute="bottom" id="FAy-WH-Wvc"/>
+                            <constraint firstItem="rwp-9E-VzS" firstAttribute="bottom" secondItem="rwp-9E-VzT" secondAttribute="bottom" id="LS0-qQ-1ym"/>
                             <constraint firstAttribute="leadingMargin" secondItem="7dZ-Ur-uSj" secondAttribute="leading" id="OQz-Cn-mbU"/>
                             <constraint firstItem="ebq-ja-6iU" firstAttribute="leading" secondItem="3Bh-pO-6uY" secondAttribute="leading" id="OWm-Gg-PVO"/>
                             <constraint firstItem="tZu-uw-hgi" firstAttribute="top" secondItem="hJ3-NM-pz1" secondAttribute="bottom" constant="16" id="VcK-2R-BU5"/>
