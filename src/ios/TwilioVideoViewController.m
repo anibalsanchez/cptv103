@@ -122,6 +122,29 @@
     }
 }
 
+- (IBAction)cameraOffButtonPressed:(id)sender {
+    // We will toggle the mic to mute/unmute and change the title according to the user action.
+
+    if (self.localVideoTrack) {
+        self.localVideoTrack.enabled = !self.localVideoTrack.isEnabled;
+
+        // Toggle the button title
+        if (self.localVideoTrack.isEnabled) {
+            // [self.micButton setTitle:@"Mute" forState:UIControlStateNormal];
+            UIImage *btnImage = [UIImage imageNamed:@"ios-mic.png"];
+            [self.micButton setImage:btnImage forState:UIControlStateNormal];
+        } else {
+            // [self.micButton setTitle:@"Unmute" forState:UIControlStateNormal];
+            UIImage *btnImage = [UIImage imageNamed:@"ios-mic-off.png"];
+            [self.micButton setImage:btnImage forState:UIControlStateNormal];
+        }
+    }
+}
+
+- (IBAction)flipCameraButtonPressed:(id)sender {
+    [self flipCamera];
+}
+
 #pragma mark - Private
 
 - (BOOL)isSimulator {
@@ -160,8 +183,16 @@
 - (void)flipCamera {
     if (self.camera.source == TVICameraCaptureSourceFrontCamera) {
         [self.camera selectSource:TVICameraCaptureSourceBackCameraWide];
+
+        // Back Camera Icon
+        UIImage *btnImage = [UIImage imageNamed:@"ios-mic-off.png"];
+        [self.micButton setImage:btnImage forState:UIControlStateNormal];
     } else {
         [self.camera selectSource:TVICameraCaptureSourceFrontCamera];
+
+        // FrontCamera
+        UIImage *btnImage = [UIImage imageNamed:@"ios-mic.png"];
+        [self.micButton setImage:btnImage forState:UIControlStateNormal];
     }
 }
 

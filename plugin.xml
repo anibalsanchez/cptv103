@@ -22,8 +22,10 @@
         <header-file src="src/ios/TwilioVideoViewController.h" />
         <resource-file src="src/ios/TwilioVideo.storyboard" target="Resources/TwilioVideo.storyboard" />
         <resource-file src="src/ios/ios-call.png" target="Resources/ios-call.png" />
+        <resource-file src="src/ios/ios-eye-off.png" target="Resources/ios-eye-off.png" />
         <resource-file src="src/ios/ios-mic-off.png" target="Resources/ios-mic-off.png" />
         <resource-file src="src/ios/ios-mic.png" target="Resources/ios-mic.png" />
+        <resource-file src="src/ios/ios-reverse-camera.png" target="Resources/ios-reverse-camera.png" />
         <pods-config ios-min-version="9.0" use-frameworks="false">
             <source url="https://github.com/CocoaPods/Specs" />
         </pods-config>
