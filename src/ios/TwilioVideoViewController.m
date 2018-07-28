@@ -147,6 +147,9 @@
     [self flipCamera];
 }
 
+- (IBAction)flipAudioButtonPressed:(id)sender {
+}
+
 #pragma mark - Private
 
 - (BOOL)isSimulator {
