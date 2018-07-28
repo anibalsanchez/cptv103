@@ -7,12 +7,15 @@
 @import TwilioVideo;
 #import "TwilioVideoViewController.h"
 
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface TwilioVideoViewController () <UITextFieldDelegate, TVIRemoteParticipantDelegate, TVIRoomDelegate, TVIVideoViewDelegate, TVICameraCapturerDelegate>
 
 // Configure access token manually for testing in `ViewDidLoad`, if desired! Create one manually in the console.
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) NSString *tokenUrl;
+@property (nonatomic, strong) NSString *audioMode;
 
 #pragma mark Video SDK components
 
@@ -72,6 +75,13 @@
 
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
+
+    // Speaker initialization
+    NSError* __autoreleasing err = nil;
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+
+    self.audioMode = @"speaker";
+    [session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionDefaultToSpeaker error:&err];
 }
 
 #pragma mark - Public
@@ -150,6 +160,34 @@
 }
 
 - (IBAction)flipAudioButtonPressed:(id)sender {
+    NSError* __autoreleasing err = nil;
+
+    UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_None;
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+
+    // Toggle
+    if (self.audioMode isEqualToString:@"speaker") {
+        self.audioMode = @"earpiece";
+
+        UIImage *btnImage = [UIImage imageNamed:@"ios-phone-volume.png"];
+        [self.flipAudioButton setImage:btnImage forState:UIControlStateNormal];
+    } else {
+        self.audioMode = @"speaker";
+
+        UIImage *btnImage = [UIImage imageNamed:@"ios-volume-high.png"];
+        [self.flipAudioButton setImage:btnImage forState:UIControlStateNormal];
+    }
+
+    // Setup from danielflippance/audiotoggle
+    if ([self.audioMode isEqualToString:@"earpiece"]) {
+        [session setCategory:AVAudioSessionCategoryPlayAndRecord error:&err];
+        audioRouteOverride = kAudioSessionProperty_OverrideCategoryDefaultToSpeaker;
+        AudioSessionSetProperty(kAudioSessionProperty_OverrideAudioRoute, sizeof(audioRouteOverride), &audioRouteOverride);
+    } else if ([self.audioMode isEqualToString:@"speaker"] || [self.audioMode isEqualToString:@"ringtone"]) {
+        [session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionDefaultToSpeaker error:&err];
+    } else if ([self.audioMode isEqualToString:@"normal"]) {
+        [session setCategory:AVAudioSessionCategorySoloAmbient error:&err];
+    }
 }
 
 #pragma mark - Private
