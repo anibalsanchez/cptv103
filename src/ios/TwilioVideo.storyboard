@@ -226,6 +226,7 @@
                         <outlet property="connectButton" destination="jgR-Qy-dC6" id="tsh-Rk-Rxk"/>
                         <outlet property="disconnectButton" destination="krA-sT-Z3g" id="uQu-1U-Ree"/>
                         <outlet property="flipCameraButton" destination="rwp-9E-VzU" id="SW4-po-OHy"/>
+                        <outlet property="flipAudioButton" destination="WaA-xc-FDP" id="SW4-po-OHz"/>
                         <outlet property="messageLabel" destination="ebq-ja-6iU" id="yjH-dj-KgF"/>
                         <outlet property="micButton" destination="rwp-9E-VzS" id="SW4-po-OHw"/>
                         <outlet property="previewView" destination="hJ3-NM-pz1" id="1kY-rd-tEJ"/>
