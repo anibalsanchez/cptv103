@@ -113,28 +113,6 @@
                                     <action selector="cameraOffButtonPressed:" destination="jSN-F6-Q4K" eventType="touchUpInside" id="6Tr-Cb-Rmg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krA-sT-Z3g">
-                                <rect key="frame" x="16" y="497" width="40" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.82999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="DiQ-eB-MAY"/>
-                                    <constraint firstAttribute="height" constant="40" id="hh5-kb-2iW"/>
-                                </constraints>
-                                <state key="normal" image="ios-call.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="imageView.contentMode">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="disconnectButtonPressed:" destination="jSN-F6-Q4K" eventType="touchUpInside" id="ekH-u1-k6a"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="hJ3-NM-pz1" customClass="TVIVideoView">
                                 <rect key="frame" x="244" y="497" width="120" height="160"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -189,6 +167,28 @@
                                     <action selector="flipAudioButtonPressed:" destination="jSN-F6-Q4K" eventType="touchUpInside" id="W1K-cd-jWQ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krA-sT-Z3g" userLabel="Disconnect Button">
+                                <rect key="frame" x="16" y="557" width="40" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.82999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="DiQ-eB-MAY"/>
+                                    <constraint firstAttribute="height" constant="40" id="hh5-kb-2iW"/>
+                                </constraints>
+                                <state key="normal" image="ios-call.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="imageView.contentMode">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="disconnectButtonPressed:" destination="jSN-F6-Q4K" eventType="touchUpInside" id="ekH-u1-k6a"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -203,6 +203,7 @@
                             <constraint firstAttribute="leadingMargin" secondItem="7dZ-Ur-uSj" secondAttribute="leading" id="OQz-Cn-mbU"/>
                             <constraint firstItem="ebq-ja-6iU" firstAttribute="leading" secondItem="3Bh-pO-6uY" secondAttribute="leading" id="OWm-Gg-PVO"/>
                             <constraint firstItem="rwp-9E-VzS" firstAttribute="leading" secondItem="rwp-9E-VzT" secondAttribute="trailing" constant="10" id="PH6-Nw-FpW"/>
+                            <constraint firstItem="rwp-9E-VzU" firstAttribute="top" secondItem="krA-sT-Z3g" secondAttribute="bottom" constant="80" id="TZ2-65-r3g"/>
                             <constraint firstItem="tZu-uw-hgi" firstAttribute="top" secondItem="hJ3-NM-pz1" secondAttribute="bottom" constant="10" id="VcK-2R-BU5"/>
                             <constraint firstItem="Zud-AS-DEE" firstAttribute="centerY" secondItem="3Bh-pO-6uY" secondAttribute="centerY" constant="-40" id="W6X-SU-S4S"/>
                             <constraint firstItem="WaA-xc-FDP" firstAttribute="leading" secondItem="rwp-9E-VzU" secondAttribute="trailing" constant="10" id="XYP-vC-DiG"/>
@@ -212,7 +213,6 @@
                             <constraint firstAttribute="trailingMargin" secondItem="jgR-Qy-dC6" secondAttribute="trailing" id="dqW-B2-5zF"/>
                             <constraint firstAttribute="trailing" secondItem="ebq-ja-6iU" secondAttribute="trailing" id="eiL-ob-cD1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EkL-i8-cDP" secondAttribute="trailing" id="lhs-bL-0xl"/>
-                            <constraint firstItem="tZu-uw-hgi" firstAttribute="top" secondItem="krA-sT-Z3g" secondAttribute="bottom" constant="10" id="mOt-mS-dXh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7dZ-Ur-uSj" secondAttribute="trailing" id="nNa-6o-3I1"/>
                             <constraint firstItem="rwp-9E-VzT" firstAttribute="leading" secondItem="WaA-xc-FDP" secondAttribute="trailing" constant="10" id="oi2-gt-XCz"/>
                             <constraint firstItem="hJ3-NM-pz1" firstAttribute="trailing" secondItem="3Bh-pO-6uY" secondAttribute="trailingMargin" constant="5" id="sFH-2X-Gms"/>
