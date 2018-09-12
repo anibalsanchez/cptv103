@@ -118,10 +118,8 @@ public class TwilioVideoActivity extends AppCompatActivity {
          * Needed for setting/abandoning audio focus during call
          */
         audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
-        audioManager.setSpeakerphoneOn(true);
 
         Intent intent = getIntent();
-
         this.accessToken = intent.getStringExtra("token");
         this.roomId =   intent.getStringExtra("roomId");
 
@@ -613,7 +611,7 @@ public class TwilioVideoActivity extends AppCompatActivity {
              * speaker mode if this is not set.
              */
             audioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);
-			audioManager.setSpeakerphoneOn(false);
+			audioManager.setSpeakerphoneOn(true);
         } else {
             audioManager.setMode(previousAudioMode);
             audioManager.abandonAudioFocus(null);
