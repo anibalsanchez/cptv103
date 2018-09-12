@@ -272,12 +272,12 @@ public class TwilioVideoActivity extends AppCompatActivity {
     //             R.drawable.ic_call_white_24px));
     //     connectActionFab.show();
     //     connectActionFab.setOnClickListener(connectActionClickListener());
-         switchCameraActionFab.show();
-         switchCameraActionFab.setOnClickListener(switchCameraClickListener());
-         localVideoActionFab.show();
-         localVideoActionFab.setOnClickListener(localVideoClickListener());
-         muteActionFab.show();
-         muteActionFab.setOnClickListener(muteClickListener());
+        switchCameraActionFab.show();
+        switchCameraActionFab.setOnClickListener(switchCameraClickListener());
+        localVideoActionFab.show();
+        localVideoActionFab.setOnClickListener(localVideoClickListener());
+        muteActionFab.show();
+        muteActionFab.setOnClickListener(muteClickListener());
         switchAudioActionFab.show();
         switchAudioActionFab.setOnClickListener(switchAudioClickListener());
      }
@@ -543,12 +543,16 @@ public class TwilioVideoActivity extends AppCompatActivity {
                 }else{
                     audioManager.setSpeakerphoneOn(true);
                 }
-                int icon = audioManager.isSpeakerphoneOn() ?
-                        R.drawable.ic_phonelink_ring_white_24dp : R.drawable.ic_volume_up_white_24dp;
-                switchAudioActionFab.setImageDrawable(ContextCompat.getDrawable(
-                        TwilioVideoActivity.this, icon));
+                updateSwitchAudioActionFab();
             }
         };
+    }
+
+    private void updateSwitchAudioActionFab()
+    {
+        int icon = audioManager.isSpeakerphoneOn() ? R.drawable.ic_phonelink_ring_white_24dp : R.drawable.ic_volume_up_white_24dp;
+
+        switchAudioActionFab.setImageDrawable(ContextCompat.getDrawable(TwilioVideoActivity.this, icon));
     }
 
     private View.OnClickListener localVideoClickListener() {
@@ -612,6 +616,7 @@ public class TwilioVideoActivity extends AppCompatActivity {
              */
             audioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);
 			audioManager.setSpeakerphoneOn(true);
+            updateSwitchAudioActionFab();
         } else {
             audioManager.setMode(previousAudioMode);
             audioManager.abandonAudioFocus(null);
