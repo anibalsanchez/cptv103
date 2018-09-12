@@ -167,7 +167,7 @@
 
     // Toggle
     if ([self.audioMode isEqualToString:@"speaker"]) {
-        self.audioMode = @"earpiece";
+        self.audioMode = @"normal";
 
         UIImage *btnImage = [UIImage imageNamed:@"ios-phone-volume.png"];
         [self.flipAudioButton setImage:btnImage forState:UIControlStateNormal];
