@@ -7,9 +7,6 @@
 @import TwilioVideo;
 #import "TwilioVideoViewController.h"
 
-#import <AudioToolbox/AudioToolbox.h>
-#import <AVFoundation/AVFoundation.h>
-
 @interface TwilioVideoViewController () <UITextFieldDelegate, TVIRemoteParticipantDelegate, TVIRoomDelegate, TVIVideoViewDelegate, TVICameraCapturerDelegate>
 
 // Configure access token manually for testing in `ViewDidLoad`, if desired! Create one manually in the console.
@@ -77,11 +74,12 @@
     [self.view addGestureRecognizer:tap];
 
     // Speaker initialization
-    NSError* __autoreleasing err = nil;
-    AVAudioSession *session = [AVAudioSession sharedInstance];
-
     self.audioMode = @"speaker";
-    [session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionDefaultToSpeaker error:&err];
+    NSError* __autoreleasing error = nil;
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setActive: YES error: nil];
+    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+    [session overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:&error];
 }
 
 #pragma mark - Public
@@ -160,33 +158,28 @@
 }
 
 - (IBAction)flipAudioButtonPressed:(id)sender {
-    NSError* __autoreleasing err = nil;
+    NSError* __autoreleasing error = nil;
 
-    UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_None;
     AVAudioSession *session = [AVAudioSession sharedInstance];
+
+    // https://github.com/saghul/cordova-plugin-audioroute/blob/master/src/ios/AudioRoute.m#L127
+    // make sure the AVAudioSession is properly configured
+    [session setActive: YES error: nil];
+    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
 
     // Toggle
     if ([self.audioMode isEqualToString:@"speaker"]) {
-        self.audioMode = @"normal";
+        self.audioMode = @"earpiece";
+        [session overrideOutputAudioPort:AVAudioSessionPortOverrideNone error:&error];
 
         UIImage *btnImage = [UIImage imageNamed:@"ios-phone-volume.png"];
         [self.flipAudioButton setImage:btnImage forState:UIControlStateNormal];
     } else {
         self.audioMode = @"speaker";
+        [session overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:&error];
 
         UIImage *btnImage = [UIImage imageNamed:@"ios-volume-high.png"];
         [self.flipAudioButton setImage:btnImage forState:UIControlStateNormal];
-    }
-
-    // Setup from danielflippance/audiotoggle
-    if ([self.audioMode isEqualToString:@"earpiece"]) {
-        [session setCategory:AVAudioSessionCategoryPlayAndRecord error:&err];
-        audioRouteOverride = kAudioSessionProperty_OverrideCategoryDefaultToSpeaker;
-        AudioSessionSetProperty(kAudioSessionProperty_OverrideAudioRoute, sizeof(audioRouteOverride), &audioRouteOverride);
-    } else if ([self.audioMode isEqualToString:@"speaker"] || [self.audioMode isEqualToString:@"ringtone"]) {
-        [session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionDefaultToSpeaker error:&err];
-    } else if ([self.audioMode isEqualToString:@"normal"]) {
-        [session setCategory:AVAudioSessionCategorySoloAmbient error:&err];
     }
 }
 
