@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G21013" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jSN-F6-Q4K">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G22010" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jSN-F6-Q4K">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!-- Twilio Video View Controller -->
+        <!--Twilio Video View Controller-->
         <scene sceneID="nZR-qd-fY9">
             <objects>
                 <viewController storyboardIdentifier="TwilioVideoViewController" id="jSN-F6-Q4K" customClass="TwilioVideoViewController" sceneMemberID="viewController">
@@ -144,29 +144,6 @@
                                     <action selector="flipCameraButtonPressed:" destination="jSN-F6-Q4K" eventType="touchUpInside" id="6Tr-Cb-Rmh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WaA-xc-FDP" userLabel="FlipAudioButton Button">
-                                <rect key="frame" x="66" y="557" width="40" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.82999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="35s-zj-9lq"/>
-                                    <constraint firstAttribute="height" constant="40" id="B9M-Y3-oLj"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" image="ios-volume-high.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="imageView.contentMode">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="flipAudioButtonPressed:" destination="jSN-F6-Q4K" eventType="touchUpInside" id="W1K-cd-jWQ"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krA-sT-Z3g" userLabel="Disconnect Button">
                                 <rect key="frame" x="16" y="557" width="40" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.82999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -189,13 +166,35 @@
                                     <action selector="disconnectButtonPressed:" destination="jSN-F6-Q4K" eventType="touchUpInside" id="ekH-u1-k6a"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WaA-xc-FDP" userLabel="FlipAudioButton Button">
+                                <rect key="frame" x="66" y="557" width="40" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.82999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="35s-zj-9lq"/>
+                                    <constraint firstAttribute="height" constant="40" id="B9M-Y3-oLj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" image="ios-volume-high.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="imageView.contentMode">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="flipAudioButtonPressed:" destination="jSN-F6-Q4K" eventType="touchUpInside" id="W1K-cd-jWQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="jgR-Qy-dC6" firstAttribute="top" secondItem="Zud-AS-DEE" secondAttribute="bottom" constant="21" id="0Am-2H-kE1"/>
                             <constraint firstItem="tZu-uw-hgi" firstAttribute="top" secondItem="rwp-9E-VzU" secondAttribute="bottom" constant="10" id="1HL-Ms-yau"/>
                             <constraint firstItem="krA-sT-Z3g" firstAttribute="leading" secondItem="3Bh-pO-6uY" secondAttribute="leadingMargin" constant="-5" id="4jO-qh-yH2"/>
-                            <constraint firstItem="WaA-xc-FDP" firstAttribute="baseline" secondItem="rwp-9E-VzT" secondAttribute="baseline" id="8Fs-hN-8Py"/>
                             <constraint firstItem="rwp-9E-VzU" firstAttribute="leading" secondItem="3Bh-pO-6uY" secondAttribute="leadingMargin" constant="-5" id="9vU-4L-An1"/>
                             <constraint firstItem="rwp-9E-VzS" firstAttribute="baseline" secondItem="rwp-9E-VzT" secondAttribute="baseline" id="AJ5-SB-dZK"/>
                             <constraint firstItem="7dZ-Ur-uSj" firstAttribute="top" secondItem="Zud-AS-DEE" secondAttribute="bottom" id="AaN-mH-AYD"/>
@@ -203,18 +202,18 @@
                             <constraint firstAttribute="leadingMargin" secondItem="7dZ-Ur-uSj" secondAttribute="leading" id="OQz-Cn-mbU"/>
                             <constraint firstItem="ebq-ja-6iU" firstAttribute="leading" secondItem="3Bh-pO-6uY" secondAttribute="leading" id="OWm-Gg-PVO"/>
                             <constraint firstItem="rwp-9E-VzS" firstAttribute="leading" secondItem="rwp-9E-VzT" secondAttribute="trailing" constant="10" id="PH6-Nw-FpW"/>
+                            <constraint firstItem="rwp-9E-VzT" firstAttribute="leading" secondItem="rwp-9E-VzU" secondAttribute="trailing" constant="10" id="SY0-5g-ptE"/>
                             <constraint firstItem="rwp-9E-VzU" firstAttribute="top" secondItem="krA-sT-Z3g" secondAttribute="bottom" constant="80" id="TZ2-65-r3g"/>
                             <constraint firstItem="tZu-uw-hgi" firstAttribute="top" secondItem="hJ3-NM-pz1" secondAttribute="bottom" constant="10" id="VcK-2R-BU5"/>
                             <constraint firstItem="Zud-AS-DEE" firstAttribute="centerY" secondItem="3Bh-pO-6uY" secondAttribute="centerY" constant="-40" id="W6X-SU-S4S"/>
-                            <constraint firstItem="WaA-xc-FDP" firstAttribute="leading" secondItem="rwp-9E-VzU" secondAttribute="trailing" constant="10" id="XYP-vC-DiG"/>
                             <constraint firstItem="EkL-i8-cDP" firstAttribute="leading" secondItem="Zud-AS-DEE" secondAttribute="trailing" constant="21" id="Xef-61-OpD"/>
                             <constraint firstAttribute="leadingMargin" secondItem="jgR-Qy-dC6" secondAttribute="leading" id="bOl-NA-2zy"/>
-                            <constraint firstItem="rwp-9E-VzU" firstAttribute="baseline" secondItem="WaA-xc-FDP" secondAttribute="baseline" id="dqC-b7-x20"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jgR-Qy-dC6" secondAttribute="trailing" id="dqW-B2-5zF"/>
                             <constraint firstAttribute="trailing" secondItem="ebq-ja-6iU" secondAttribute="trailing" id="eiL-ob-cD1"/>
+                            <constraint firstItem="rwp-9E-VzT" firstAttribute="baseline" secondItem="rwp-9E-VzU" secondAttribute="baseline" id="kAS-iI-fWh"/>
+                            <constraint firstItem="krA-sT-Z3g" firstAttribute="baseline" secondItem="WaA-xc-FDP" secondAttribute="baseline" id="lgt-hb-r9K"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EkL-i8-cDP" secondAttribute="trailing" id="lhs-bL-0xl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7dZ-Ur-uSj" secondAttribute="trailing" id="nNa-6o-3I1"/>
-                            <constraint firstItem="rwp-9E-VzT" firstAttribute="leading" secondItem="WaA-xc-FDP" secondAttribute="trailing" constant="10" id="oi2-gt-XCz"/>
                             <constraint firstItem="hJ3-NM-pz1" firstAttribute="trailing" secondItem="3Bh-pO-6uY" secondAttribute="trailingMargin" constant="5" id="sFH-2X-Gms"/>
                             <constraint firstItem="ebq-ja-6iU" firstAttribute="top" secondItem="8oD-ke-cGW" secondAttribute="bottom" id="sqw-S7-DJO"/>
                             <constraint firstItem="EkL-i8-cDP" firstAttribute="baseline" secondItem="Zud-AS-DEE" secondAttribute="baseline" id="wcj-oJ-1M9"/>
@@ -225,8 +224,8 @@
                         <outlet property="cameraOffButton" destination="rwp-9E-VzT" id="SW4-po-OHx"/>
                         <outlet property="connectButton" destination="jgR-Qy-dC6" id="tsh-Rk-Rxk"/>
                         <outlet property="disconnectButton" destination="krA-sT-Z3g" id="uQu-1U-Ree"/>
-                        <outlet property="flipCameraButton" destination="rwp-9E-VzU" id="SW4-po-OHy"/>
                         <outlet property="flipAudioButton" destination="WaA-xc-FDP" id="SW4-po-OHz"/>
+                        <outlet property="flipCameraButton" destination="rwp-9E-VzU" id="SW4-po-OHy"/>
                         <outlet property="messageLabel" destination="ebq-ja-6iU" id="yjH-dj-KgF"/>
                         <outlet property="micButton" destination="rwp-9E-VzS" id="SW4-po-OHw"/>
                         <outlet property="previewView" destination="hJ3-NM-pz1" id="1kY-rd-tEJ"/>
