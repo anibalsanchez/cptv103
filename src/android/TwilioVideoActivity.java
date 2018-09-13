@@ -75,7 +75,9 @@ public class TwilioVideoActivity extends AppCompatActivity {
     /*
      * Android application UI elements
      */
+
     //private TextView videoStatusTextView;
+
     private CameraCapturer cameraCapturer;
     private LocalMedia localMedia;
     private LocalAudioTrack localAudioTrack;
@@ -84,8 +86,10 @@ public class TwilioVideoActivity extends AppCompatActivity {
     private FloatingActionButton switchCameraActionFab;
     private FloatingActionButton localVideoActionFab;
     private FloatingActionButton muteActionFab;
-    private FloatingActionButton switchAudioActionFab;
+
+    // private FloatingActionButton switchAudioActionFab;
     //private android.support.v7.app.AlertDialog alertDialog;
+
     private AudioManager audioManager;
     private String participantIdentity;
 
@@ -101,13 +105,15 @@ public class TwilioVideoActivity extends AppCompatActivity {
 
         primaryVideoView = (VideoView) findViewById(R.id.primary_video_view);
         thumbnailVideoView = (VideoView) findViewById(R.id.thumbnail_video_view);
+
         //videoStatusTextView = (TextView) findViewById(R.id.video_status_textview);
 
         connectActionFab = (FloatingActionButton) findViewById(R.id.connect_action_fab);
         switchCameraActionFab = (FloatingActionButton) findViewById(R.id.switch_camera_action_fab);
         localVideoActionFab = (FloatingActionButton) findViewById(R.id.local_video_action_fab);
         muteActionFab = (FloatingActionButton) findViewById(R.id.mute_action_fab);
-        switchAudioActionFab = (FloatingActionButton) findViewById(R.id.switch_audio_action_fab);
+
+        // switchAudioActionFab = (FloatingActionButton) findViewById(R.id.switch_audio_action_fab);
 
         /*
          * Enable changing the volume using the up/down keys during a conversation
@@ -268,18 +274,20 @@ public class TwilioVideoActivity extends AppCompatActivity {
      * The initial state when there is no active conversation.
      */
     private void intializeUI() {
-    //     connectActionFab.setImageDrawable(ContextCompat.getDrawable(this,
-    //             R.drawable.ic_call_white_24px));
-    //     connectActionFab.show();
-    //     connectActionFab.setOnClickListener(connectActionClickListener());
+        //     connectActionFab.setImageDrawable(ContextCompat.getDrawable(this,
+        //             R.drawable.ic_call_white_24px));
+        //     connectActionFab.show();
+        //     connectActionFab.setOnClickListener(connectActionClickListener());
+
         switchCameraActionFab.show();
         switchCameraActionFab.setOnClickListener(switchCameraClickListener());
         localVideoActionFab.show();
         localVideoActionFab.setOnClickListener(localVideoClickListener());
         muteActionFab.show();
         muteActionFab.setOnClickListener(muteClickListener());
-        switchAudioActionFab.show();
-        switchAudioActionFab.setOnClickListener(switchAudioClickListener());
+
+        // switchAudioActionFab.show();
+        // switchAudioActionFab.setOnClickListener(switchAudioClickListener());
      }
 
     /*
@@ -543,17 +551,17 @@ public class TwilioVideoActivity extends AppCompatActivity {
                 }else{
                     audioManager.setSpeakerphoneOn(true);
                 }
-                updateSwitchAudioActionFab();
+                // updateSwitchAudioActionFab();
             }
         };
     }
 
-    private void updateSwitchAudioActionFab()
-    {
-        int icon = audioManager.isSpeakerphoneOn() ? R.drawable.ic_phonelink_ring_white_24dp : R.drawable.ic_volume_up_white_24dp;
+    // private void updateSwitchAudioActionFab()
+    // {
+    //     int icon = audioManager.isSpeakerphoneOn() ? R.drawable.ic_phonelink_ring_white_24dp : R.drawable.ic_volume_up_white_24dp;
 
-        switchAudioActionFab.setImageDrawable(ContextCompat.getDrawable(TwilioVideoActivity.this, icon));
-    }
+    //     switchAudioActionFab.setImageDrawable(ContextCompat.getDrawable(TwilioVideoActivity.this, icon));
+    // }
 
     private View.OnClickListener localVideoClickListener() {
         return new View.OnClickListener() {
@@ -616,7 +624,7 @@ public class TwilioVideoActivity extends AppCompatActivity {
              */
             audioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);
 			audioManager.setSpeakerphoneOn(true);
-            updateSwitchAudioActionFab();
+            // updateSwitchAudioActionFab();
         } else {
             audioManager.setMode(previousAudioMode);
             audioManager.abandonAudioFocus(null);
