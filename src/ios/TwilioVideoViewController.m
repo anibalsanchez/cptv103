@@ -7,6 +7,9 @@
 @import TwilioVideo;
 #import "TwilioVideoViewController.h"
 
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
+
 @interface TwilioVideoViewController () <UITextFieldDelegate, TVIRemoteParticipantDelegate, TVIRoomDelegate, TVIVideoViewDelegate, TVICameraCapturerDelegate>
 
 // Configure access token manually for testing in `ViewDidLoad`, if desired! Create one manually in the console.
@@ -74,12 +77,11 @@
     [self.view addGestureRecognizer:tap];
 
     // Speaker initialization
-    self.audioMode = @"speaker";
-    NSError* __autoreleasing error = nil;
+    NSError* __autoreleasing err = nil;
     AVAudioSession *session = [AVAudioSession sharedInstance];
-    [session setActive: YES error: nil];
-    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
-    [session overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:&error];
+
+    self.audioMode = @"speaker";
+    [session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionDefaultToSpeaker error:&err];
 }
 
 #pragma mark - Public
@@ -157,55 +159,34 @@
     [self flipCamera];
 }
 
-/*
-                            <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WaA-xc-FDP" userLabel="FlipAudioButton Button">
-                                <rect key="frame" x="66" y="617" width="40" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.82999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="35s-zj-9lq"/>
-                                    <constraint firstAttribute="height" constant="40" id="B9M-Y3-oLj"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" image="ios-volume-high.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="imageView.contentMode">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="flipAudioButtonPressed:" destination="jSN-F6-Q4K" eventType="touchUpInside" id="W1K-cd-jWQ"/>
-                                </connections>
-                            </button>
-*/
-
 - (IBAction)flipAudioButtonPressed:(id)sender {
-    NSError* __autoreleasing error = nil;
+    NSError* __autoreleasing err = nil;
 
+    UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_None;
     AVAudioSession *session = [AVAudioSession sharedInstance];
-
-    // https://github.com/saghul/cordova-plugin-audioroute/blob/master/src/ios/AudioRoute.m#L127
-    // make sure the AVAudioSession is properly configured
-    [session setActive: YES error: nil];
-    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
 
     // Toggle
     if ([self.audioMode isEqualToString:@"speaker"]) {
         self.audioMode = @"earpiece";
-        [session overrideOutputAudioPort:AVAudioSessionPortOverrideNone error:&error];
 
         UIImage *btnImage = [UIImage imageNamed:@"ios-phone-volume.png"];
         [self.flipAudioButton setImage:btnImage forState:UIControlStateNormal];
     } else {
         self.audioMode = @"speaker";
-        [session overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:&error];
 
         UIImage *btnImage = [UIImage imageNamed:@"ios-volume-high.png"];
         [self.flipAudioButton setImage:btnImage forState:UIControlStateNormal];
+    }
+
+    // Setup from danielflippance/audiotoggle
+    if ([self.audioMode isEqualToString:@"earpiece"]) {
+        [session setCategory:AVAudioSessionCategoryPlayAndRecord error:&err];
+        audioRouteOverride = kAudioSessionProperty_OverrideCategoryDefaultToSpeaker;
+        AudioSessionSetProperty(kAudioSessionProperty_OverrideAudioRoute, sizeof(audioRouteOverride), &audioRouteOverride);
+    } else if ([self.audioMode isEqualToString:@"speaker"] || [self.audioMode isEqualToString:@"ringtone"]) {
+        [session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionDefaultToSpeaker error:&err];
+    } else if ([self.audioMode isEqualToString:@"normal"]) {
+        [session setCategory:AVAudioSessionCategorySoloAmbient error:&err];
     }
 }
 
@@ -349,13 +330,15 @@
 
 // Reset the client ui status
 - (void)showRoomUI:(BOOL)inRoom {
-    /*self.roomTextField.hidden = inRoom;
+    /*
+    self.roomTextField.hidden = inRoom;
     self.connectButton.hidden = inRoom;
     self.roomLine.hidden = inRoom;
-    self.roomLabel.hidden = inRoom;*/
+    self.roomLabel.hidden = inRoom;
+    self.flipAudioButton.hidden = !inRoom;
+    */
 
     self.cameraOffButton.hidden = !inRoom;
-    self.flipAudioButton.hidden = !inRoom;
     self.flipCameraButton.hidden = !inRoom;
     self.micButton.hidden = !inRoom;
 
