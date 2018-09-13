@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Twilio Video View Controller-->
+        <!-- Twilio Video View Controller -->
         <scene sceneID="nZR-qd-fY9">
             <objects>
                 <viewController storyboardIdentifier="TwilioVideoViewController" id="jSN-F6-Q4K" customClass="TwilioVideoViewController" sceneMemberID="viewController">
