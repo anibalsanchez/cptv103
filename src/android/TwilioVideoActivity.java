@@ -4,10 +4,12 @@ package org.apache.cordova.plugin;
 import com.qaracter.asybapppre.R;
 // import com.extly.asybapppre.R;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.Manifest;
+import android.media.AudioAttributes;
+import android.media.AudioFocusRequest;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -91,6 +93,7 @@ public class TwilioVideoActivity extends AppCompatActivity {
     private String participantIdentity;
 
     private int previousAudioMode;
+    private boolean previousMicrophoneMute;
     private VideoRenderer localVideoView;
     private boolean disconnectedFromOnDestroy;
 
