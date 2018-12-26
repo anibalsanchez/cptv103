@@ -4,10 +4,10 @@ package org.apache.cordova.plugin;
 // import com.extly.asybapppre.R;
 
 // PRE
-import com.qaracter.asybapppre.R;
+// import com.qaracter.asybapppre.R;
 
 // PRO
-// import com.qaracter.asybapp.R;
+import com.qaracter.asybapp.R;
 
 import android.content.Context;
 import android.content.DialogInterface;
